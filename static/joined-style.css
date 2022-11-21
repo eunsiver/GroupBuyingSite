@@ -1,0 +1,178 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#box{
+    background-color: #f3eded;
+    width: 90%;
+    height: 100%;
+    overflow: auto;
+}
+
+.contents{
+    padding-top: 30px;
+    position: relative;
+    left: 50px;
+    height:500px;
+    width:1100px;
+}
+
+.bookmodify{
+    margin-left:5px ;
+}
+.bookmodify a{
+    text-decoration: none;
+    color: black;
+}
+
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.sideNav {
+    background-color: rgb(44, 44, 44);
+    color: white;
+    width: 250px;
+    position:fixed;
+    top:0;
+    left:0;
+    height: 100%;
+    z-index: 1;
+}
+
+.sideNav header {
+    color: rgb(201, 201, 201);
+    text-align: center;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    text-transform: uppercase;
+    font-size: 35px;
+}
+
+#userImg {
+    width:35px;
+    height:35px;
+    align-items: center;
+    margin-left: 100px;
+}
+.sideNav li {
+    list-style: none;
+    padding: 10px
+}
+.sideNav li a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    /* border-bottom: 2px solid rgb(85, 85, 85); */
+    display: block;
+}
+
+.contents {
+    margin-left: 250px;
+    padding-bottom: 50px;
+}
+#joinedGroup, #createdGroup {
+    margin: 10px 0;
+}
+.book {
+    background-color: #f3eded;
+    border: 3px solid black; /* Test */
+    border-radius: 9px;
+    padding: 70px;
+    margin: 2px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    position: relative;
+    z-index:2;
+}
+
+#error{
+    position:fixed;
+    top:200px;
+    left:730px;
+    z-index:0;
+}
+
+
+.bookDescription {
+    padding: 10px 0px 0px 30px;
+    /* border: 1px solid black; */ /* Test */
+    /* position: relative; */ /* Removable */
+    /* overflow: hidden; */
+}
+.bookImage {
+    width: 150px;
+    float: left;
+    /* overflow: auto; */
+    flex-wrap:wrap;
+
+}
+.bookName {
+    font-size: 30px;
+    font-weight: 600;
+    /* margin: 10px; */
+}
+.bookAuthor {
+    font-size: 20px;
+    /* margin: 10px; */
+}
+.bookName, .bookAuthor, .bookPublishYear, .bookPrice, .bookBuy, .bookPersonnel, progress {
+    margin: 6px
+}
+.book button {
+    background-color: white;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+.book button:hover {
+    background-color: #b9b9b9;
+}
+progress {
+    accent-color: black;
+}
+.editInfo {
+    text-align: center;
+    /*align-items: baseline; */
+}
+.editInfo input[type="text"], input[type="password"], input[type="tel"] {
+    margin-top: 8px;
+    height: 30px;
+    width: 400px;
+    /* border-radius: 10px;   */
+}
+.editInfo input[type="submit"] {
+    margin-top: 20px;
+    background-color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 400px;
+}
+
+.editInfo input[type="submit"]:hover {
+    background-color: rgb(200, 200, 200);
+}
+.bookmodify{
+    margin-left:5px ;
+}
+
+.contents h2{
+    font-size: 40px;
+}
+.imgUpload{
+    width: 400px;
+    height: 200px;
+    border: 1px solid black;
+}
+.editInfo{
+    position: absolute;
+    top: 20%;
+    left: 35%;
+}
+
+#control_btn_box{
+    display:flex;
+    justify-content: flex-end;
+}
+.control_btn{
+    margin :5px;
+}

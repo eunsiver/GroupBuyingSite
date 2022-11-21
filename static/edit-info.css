@@ -1,0 +1,44 @@
+.contents h2{
+    font-size: 40px;
+}
+.editpw-error {
+    color: red;
+    margin:auto; 
+    text-align:left;
+}
+
+.editpw-label {
+    color: black;
+    margin-top: 50px;
+    /* margin-left: 150px; */
+    font-weight: bold;
+}
+
+.editinfo-field input{
+    margin-top: 8px;
+    height: 30px;
+    width: 400px;
+}
+
+#editinfo-description {
+    margin-top: 8px;
+}  
+
+/* ...ㅎ */
+#id_password {
+    display: none;
+}
+
+button {
+    background-color: white;
+    color: darkslategrey;
+    padding: 8px 16px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 400px;
+}
+
+button:hover {
+    background-color: rgb(200, 200, 200);
+}

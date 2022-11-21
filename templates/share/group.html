@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta chrarset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'group-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <title>Make Group</title>
+    <script>
+
+</script>
+</head>
+
+<body>
+
+    <header>
+        <div id="sharebox">
+            <a href="{%url 'share:create' %}" id="share"><b>LET'S<br>START</b></a>
+        </div>
+        <h1><a href="/share/" id="pagename">SHARESHARE</a></h1>
+
+        <nav>
+            {% if user.is_authenticated %}
+            <a href="{%url 'share:cart' %}" id="cart">CART</a>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'common:logout' %}">LOGOUT</a>
+            {% else %}
+            <a class="nav-link" href="{% url 'common:login' %}">LOGIN</a>
+            {% endif %}
+        </nav>
+
+    </header>
+
+
+<!--    이름-->
+<!--    카테고리-->
+<!--    원가-->
+<!--    참여자-->
+<!--    할인가-->
+<!--    정보-->
+
+    <div id="made">
+
+        <div id="info">
+
+            <form action="{% url 'share:create' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="bookname"><b>Name of the item</b></label><br>
+                <input type="text" name="title" id="bookname" placeholder="Please enter the Name of the item">
+                <br>
+                <br>
+                {% comment %} 이미지 파일 업로드 및 썸네일 표시 {% endcomment %}
+                <div id = "previewbox">
+                    <input name="image" class="image" type="file" onchange="readURL(this);">
+                    <img src="{% static 'images/default.jpg' %}" id ="preview" alt="book">
+                </div>
+                <br>
+                <br>
+
+                <label for="author"><b>Category</b></label> <br>
+                <div id="choose">
+                    <input type='radio'  name="category" value='Book' checked/>Book
+                    <input type='radio'  name="category" value='Food' />Food
+                    <input type='radio'  name="category" value='Stationery' />Stationery
+                    <input type='radio'  name="category" value='Clothes' />Clothes
+                    <input type='radio'  name="category" value='Etc' />Etc
+                </div>
+
+                <br>
+
+                <label for="orginal"><b>Original Price</b></label> <br>
+                <input type="text" id="original" name="price" placeholder="Please enter the original price">
+
+                <br>
+
+                <label for="usernumber"><b>Number of participants</b></label><br>
+                <div id="cal">
+                    <input type="number" name="recruit_num" id="usernumber" placeholder="Please write down the number of applicants">
+<!--                    <button type="button" id="calbutton">CAL</button>-->
+                </div>
+
+                <br>
+
+                <label for="discount"><b>Discount Price</b></label><br>
+<!--                <p id="discount"></p>-->
+                <input type="text" id="discount" name="dicount_price">
+
+                <br>
+
+                <label for="comment" class="title"><b>Information</b></label><br>
+                <textarea cols="40" name="content" rows="3" id="comment" placeholder="Please enter your information and link of this product"></textarea>
+
+                <br>
+
+                <input type="submit" name="submit" value="Create"/>
+            </form>
+        </div>
+
+    </div>
+
+
+<h1>{{ question.subject }}</h1>
+<div>
+    {{ question.content }}
+</div>
+
+    <div id="finish">
+        <footer class="footer">
+            <h1><a href="/share/" id="pagename">SHARESHARE</a></h1>
+            <div>
+            This is Team TAG's Project!!<br><br>
+            최락원, 김민수, 이은서, 변승진, 이은지, 유종혁
+            </div>
+        </footer>
+    </div>
+
+    {% comment %} 이미지파일 썸네일 관련 스트립트 {% endcomment %}
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function(e) {
+                document.getElementById('preview').src = e.target.result;
+              };
+              reader.readAsDataURL(input.files[0]);
+            } else {
+              document.getElementById('preview').src = "";
+            }
+          }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="myPage.css">
+    <link rel="stylesheet" href="joined.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'joined-style.css' %}?after">
+    <link rel="stylesheet" type="text/css" href="{% static 'edit-info.css' %}?after">
+
+    <title>Edit Password</title>
+</head>
+<body>
+    <div class="sideNav" style="top:0; left:0">
+        <header>My Page</header>
+        <img src="{% static 'images/user.png' %}" alt="" id="userImg">
+        <ul>
+            <li><a href="/share/" id="pagename">Home</a></li>
+            <li><a href="{% url 'share:joined' %}" id="joined">Joined Group</a></li>
+            <li><a href="{% url 'share:cart' %}">Created Group</a></li>
+            <li><a href="{% url 'common:editinfo' %}">Edit Information</a></li>
+            <li><a href="{% url 'common:editpw' %}"><b>Edit Password</b></a></li>
+            {% if user.is_authenticated %}
+            <li><a class="nav-link" href="{% url 'common:logout' %}">logout</a></li>
+            {% endif %}     
+        </ul>
+    </div>
+    <div class="contents">
+        <h2>Change Password</h2>
+        <form method="POST">
+            {% csrf_token %}
+
+            {% for error in form.non_field_errors %}
+                <div class="editpw-error">
+                    {{ error }}
+                </div>
+            {% endfor %}
+
+            {% for field in form %}
+                <div class="editpw-label">
+                    {{ field.label }}
+                </div>
+
+                <div class="editpw-field">
+                    {{ field }}
+                </div>
+
+                {% if field.errors %}
+                <div class="editpw-error">
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+            {% endfor%}
+            <button type="submit">Edit</button>
+        </form>
+    </div>
+</body>

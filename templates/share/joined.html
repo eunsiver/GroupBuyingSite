@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'joined-style.css' %}?after">
+    <title>Joined Group</title>
+</head>
+
+<body>
+    <div class="sideNav" style="top:0; left:0">
+        <header>My Page</header>
+        <img src="{% static 'images/user.png' %}" alt="" id="userImg">
+        <ul>
+            <li><a href="/share/" id="pagename">Home</a></li>
+            <li><a href="{% url 'share:joined' %}" id="joined"><b>Joined Group</b></a></li>
+            <li><a href="{% url 'share:cart' %}">Created Group</a></li>
+            <li><a href="{% url 'common:editinfo' %}">Edit Information</a></li>
+            <li><a href="{% url 'common:editpw' %}">Edit Password</a></li>
+            {% if user.is_authenticated %}
+            <li><a class="nav-link" href="{% url 'common:logout' %}">logout</a></li>
+            {% endif %}     
+        </ul>
+    </div>
+    <div class="contents">
+        <div id="joinedGroup">
+            <h2 style="margin-left: 10px;">Joined Group</h2>
+
+            <div id="box">
+                <div id="error">
+                    There is no product!
+                </div>
+                    {% for Post in Post_list %}
+                        {% if request.user in Post.joined_users.all %}
+                        <article class="book">
+                            {% if Post.image %}
+                            <a href="/share/{{ Post.id }}/"><img src="{{Post.image.url}}" class="bookImage" alt="book"></a>
+                            {% else %}
+                            <a href="/share/{{ Post.id }}/"><img src="{% static 'images/default.jpg' %}" class="bookImage" alt="book"></a>
+                            {% endif %}
+                            <div class = "contents_bottom">
+                                <div class="bookName">
+                                    <div>{{Post.title}}</div>
+                                </div>
+
+                                <progress value={{Post.participants}} max={{Post.recruit_num}}></progress>
+
+                                <div class="bookPrice">
+                                    <div class="bookPersonnel"><p style="margin: 0;">목표 인원: {{Post.recruit_num}} / 담은 인원 : {{Post.participants}} </p></div>
+                                    <span style="color:balck"> <del style="color:rgb(180, 179, 179); font-size: 13px;">{{Post.price}}</del>{{Post.dicount_price}}</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+                        {% endif %}
+                    {% empty %}
+                        <div>상품이 없습니다!</div>
+                    {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
