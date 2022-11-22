@@ -25,6 +25,8 @@
 - 이은서: 발표 ppt 제작, 기획
 - 변승진: 마이페이지 수정(html, css)
 
+## 코드에 ppt로 설명 첨부(shareshare)
+
 ## 동영상으로 사이트 상세 설명
 [![미리보기](https://user-images.githubusercontent.com/76419984/203136757-2d6281e4-1b8f-47d7-b6f2-91cde35e4862.png)
 ](https://www.youtube.com/watch?app=desktop&v=hNkaiWQxHMU&feature=youtu.be)
